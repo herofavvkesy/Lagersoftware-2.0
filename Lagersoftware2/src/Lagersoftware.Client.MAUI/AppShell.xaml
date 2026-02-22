@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:pages="clr-namespace:Lagersoftware.Client.MAUI.Pages"
+       x:Class="Lagersoftware.Client.MAUI.AppShell"
+       Shell.NavBarIsVisible="True"
+       Title="Lagersoftware 2.0">
+
+    <Shell.Resources>
+        <Style TargetType="Shell">
+            <Setter Property="Shell.BackgroundColor" Value="#0078D4" />
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#0078D4" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+        </Style>
+    </Shell.Resources>
+
+    <!-- Login page - shown before authentication -->
+    <ShellContent Title="Anmelden"
+                  ContentTemplate="{DataTemplate pages:LoginPage}"
+                  Route="LoginPage" />
+</Shell>
