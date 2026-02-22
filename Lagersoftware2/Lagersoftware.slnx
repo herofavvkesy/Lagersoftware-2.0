@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Lagersoftware.Server/Lagersoftware.Server.csproj" />
     <Project Path="src/Lagersoftware.Shared/Lagersoftware.Shared.csproj" />
   </Folder>
 </Solution>
