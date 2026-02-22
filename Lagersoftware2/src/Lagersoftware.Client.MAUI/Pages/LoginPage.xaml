@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lagersoftware.Client.MAUI.Pages.LoginPage"
+             Title="Lagersoftware 2.0"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="16" Padding="32" VerticalOptions="Center">
+
+            <Label Text="🏭 Lagersoftware 2.0"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource PrimaryColor}" />
+
+            <Label Text="Lagerverwaltung"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   TextColor="{StaticResource TextSecondaryColor}" />
+
+            <Frame Style="{StaticResource CardStyle}" Margin="0,16,0,0">
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="Server-Adresse" FontAttributes="Bold" />
+                    <Entry x:Name="ServerUrlEntry"
+                           Placeholder="http://localhost:5000"
+                           Keyboard="Url" />
+
+                    <Label Text="Benutzername" FontAttributes="Bold" />
+                    <Entry x:Name="UsernameEntry" Placeholder="Benutzername" />
+
+                    <Label Text="Passwort" FontAttributes="Bold" />
+                    <Entry x:Name="PasswordEntry"
+                           Placeholder="Passwort"
+                           IsPassword="True" />
+
+                    <Button Text="Anmelden"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Clicked="OnLoginClicked"
+                            Margin="0,8,0,0" />
+
+                    <ActivityIndicator x:Name="LoadingIndicator"
+                                       IsVisible="False"
+                                       IsRunning="False"
+                                       Color="{StaticResource PrimaryColor}" />
+
+                    <Label x:Name="ErrorLabel"
+                           TextColor="{StaticResource DangerColor}"
+                           IsVisible="False"
+                           HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Support-Reset"
+                    BackgroundColor="Transparent"
+                    TextColor="{StaticResource TextSecondaryColor}"
+                    FontSize="12"
+                    Clicked="OnSupportResetClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

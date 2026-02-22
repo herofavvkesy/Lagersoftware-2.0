@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lagersoftware.Client.MAUI.Pages.ProductsPage"
+             Title="Produkte"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <VerticalStackLayout Spacing="8" Padding="16">
+        <SearchBar x:Name="SearchBar" Placeholder="Suchen (Name, Barcode...)" TextChanged="OnSearchChanged" />
+        <Button Text="+ Neues Produkt" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnAddProductClicked" x:Name="AddButton" IsVisible="False" />
+        <CollectionView x:Name="ProductsList" SelectionMode="Single" SelectionChanged="OnProductSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,4">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <VerticalStackLayout Grid.Column="0">
+                                <Label Text="{Binding Name}" FontAttributes="Bold" />
+                                <Label Text="{Binding CategoryName}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" />
+                                <Label Text="{Binding Barcode}" FontSize="11" TextColor="{StaticResource TextSecondaryColor}" />
+                            </VerticalStackLayout>
+                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="{Binding Quantity, StringFormat='{0} Stk.'}" FontAttributes="Bold" HorizontalOptions="End" />
+                                <Label Text="{Binding StorageLocationName}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" HorizontalOptions="End" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

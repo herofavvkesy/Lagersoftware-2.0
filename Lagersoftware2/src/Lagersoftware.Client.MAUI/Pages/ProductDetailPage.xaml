@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lagersoftware.Client.MAUI.Pages.ProductDetailPage"
+             Title="Produkt"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="12" Padding="16">
+            <Frame Style="{StaticResource CardStyle}">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Name *" FontAttributes="Bold" />
+                    <Entry x:Name="NameEntry" Placeholder="Produktname" />
+
+                    <Label Text="Beschreibung" FontAttributes="Bold" />
+                    <Editor x:Name="DescriptionEditor" Placeholder="Beschreibung" HeightRequest="80" />
+
+                    <Label Text="Barcode / EAN" FontAttributes="Bold" />
+                    <Entry x:Name="BarcodeEntry" Placeholder="Barcode" Keyboard="Numeric" />
+
+                    <Label Text="Bestand" FontAttributes="Bold" />
+                    <Entry x:Name="QuantityEntry" Placeholder="0" Keyboard="Numeric" />
+
+                    <Label Text="Mindestbestand" FontAttributes="Bold" />
+                    <Entry x:Name="MinQuantityEntry" Placeholder="0" Keyboard="Numeric" />
+
+                    <Label Text="Preis (€)" FontAttributes="Bold" />
+                    <Entry x:Name="PriceEntry" Placeholder="0.00" Keyboard="Numeric" />
+
+                    <Label Text="Kategorie" FontAttributes="Bold" />
+                    <Picker x:Name="CategoryPicker" Title="Kategorie auswählen" />
+
+                    <Label Text="Lagerort" FontAttributes="Bold" />
+                    <Picker x:Name="LocationPicker" Title="Lagerort auswählen" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Speichern" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnSaveClicked" />
+            <Button x:Name="DeleteButton" Text="Löschen" Style="{StaticResource DangerButtonStyle}" Clicked="OnDeleteClicked" IsVisible="False" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

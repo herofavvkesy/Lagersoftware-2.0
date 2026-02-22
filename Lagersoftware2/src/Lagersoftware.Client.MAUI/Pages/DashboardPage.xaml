@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lagersoftware.Client.MAUI.Pages.DashboardPage"
+             Title="Dashboard"
+             BackgroundColor="{StaticResource BackgroundColor}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="12" Padding="16">
+
+            <!-- Status Bar -->
+            <Frame Style="{StaticResource CardStyle}">
+                <HorizontalStackLayout Spacing="8">
+                    <Ellipse x:Name="StatusDot" WidthRequest="12" HeightRequest="12" Fill="Gray" VerticalOptions="Center"/>
+                    <Label x:Name="StatusLabel" Text="Verbindungsstatus prüfen..." VerticalOptions="Center" />
+                    <Button Text="Sync" Clicked="OnSyncClicked" HorizontalOptions="EndAndExpand"
+                            BackgroundColor="{StaticResource PrimaryColor}" TextColor="White"
+                            CornerRadius="4" Padding="12,4" FontSize="12" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- Stats Grid -->
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Frame Grid.Row="0" Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="📦" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="TotalProductsLabel" Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource PrimaryColor}" />
+                        <Label Text="Produkte" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource TextSecondaryColor}" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="⚠️" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="LowStockLabel" Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource WarningColor}" />
+                        <Label Text="Niedriger Bestand" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource TextSecondaryColor}" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="📋" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="MovementsTodayLabel" Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource SuccessColor}" />
+                        <Label Text="Buchungen heute" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource TextSecondaryColor}" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout>
+                        <Label Text="🏪" FontSize="24" HorizontalOptions="Center" />
+                        <Label x:Name="LocationsLabel" Text="0" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource AccentColor}" />
+                        <Label Text="Lagerorte" FontSize="12" HorizontalOptions="Center" TextColor="{StaticResource TextSecondaryColor}" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Navigation -->
+            <Label Text="Schnellzugriff" FontAttributes="Bold" FontSize="16" Margin="0,8,0,0" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                <Button Grid.Row="0" Grid.Column="0" Text="📦 Produkte" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnProductsClicked" />
+                <Button Grid.Row="0" Grid.Column="1" Text="📋 Buchung" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnMovementClicked" />
+                <Button Grid.Row="1" Grid.Column="0" Text="⚙️ Einstellungen" BackgroundColor="{StaticResource TextSecondaryColor}" TextColor="White" CornerRadius="4" Padding="16,8" Clicked="OnSettingsClicked" />
+                <Button Grid.Row="1" Grid.Column="1" Text="👑 Admin" BackgroundColor="{StaticResource SecondaryColor}" TextColor="White" CornerRadius="4" Padding="16,8" Clicked="OnAdminClicked" x:Name="AdminButton" IsVisible="False" />
+            </Grid>
+
+            <!-- Recent Movements -->
+            <Label Text="Letzte Buchungen" FontAttributes="Bold" FontSize="16" Margin="0,8,0,0" />
+            <CollectionView x:Name="RecentMovementsList" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource CardStyle}" Margin="0,0,0,4">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Grid.Column="0">
+                                    <Label Text="{Binding ProductName}" FontAttributes="Bold" />
+                                    <Label Text="{Binding MovementTypeName}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" HorizontalOptions="End">
+                                    <Label Text="{Binding Quantity, StringFormat='{0} Stk.'}" FontAttributes="Bold" HorizontalOptions="End" />
+                                    <Label Text="{Binding Username}" FontSize="12" TextColor="{StaticResource TextSecondaryColor}" HorizontalOptions="End" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

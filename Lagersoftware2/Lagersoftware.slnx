@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/src/">
+    <Project Path="src/Lagersoftware.Client.Core/Lagersoftware.Client.Core.csproj" />
+    <Project Path="src/Lagersoftware.Client.MAUI/Lagersoftware.Client.MAUI.csproj" />
     <Project Path="src/Lagersoftware.Server/Lagersoftware.Server.csproj" />
     <Project Path="src/Lagersoftware.Shared/Lagersoftware.Shared.csproj" />
   </Folder>
